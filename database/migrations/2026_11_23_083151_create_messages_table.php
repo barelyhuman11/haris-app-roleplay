@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['USER', 'AI']);
-            $table->string('message_id');
+            $table->string('message_id')->nullable();
+            $table->string('stats_message_id')->nullable();
+            $table->string('deepseek_id')->nullable();
             $table->text('message');
+            $table->json('witnesses')->nullable();
         });
     }
 

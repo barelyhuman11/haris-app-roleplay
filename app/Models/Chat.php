@@ -12,5 +12,14 @@ class Chat extends Model
         'chat_id',
         'is_auth',
         'state',
+        'active_characters',
+    ];
+
+    protected $casts = [
+        'active_characters' => 'array',
+    ];
+
+    protected $attributes = [
+        'active_characters' => '[]',
     ];
 }

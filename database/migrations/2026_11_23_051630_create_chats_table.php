@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('chat_id');
             $table->enum('is_auth', ['Y', 'N'])->default('N');
             $table->string('state')->nullable();
+            $table->json('active_characters')->nullable();
         });
     }
 
