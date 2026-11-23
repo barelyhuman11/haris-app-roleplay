@@ -1,0 +1,43 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$container-padding-x: 1rem;
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+$white: #fff;
+
+$font-size-base: 1rem;
+
+$h1-font-size: $font-size-base * 2;
+$h2-font-size: $font-size-base * 1.8;
+$h3-font-size: $font-size-base * 1.6;
+$h4-font-size: $font-size-base * 1.4;
+$h5-font-size: $font-size-base * 1.2;
+$h6-font-size: $font-size-base;
+
+@import "bootstrap/scss/bootstrap";
+
+[x-cloak] {
+    display: none !important;
+}
+
+.hr-color {
+    border: none;
+    border-top: $card-border-width solid $card-border-color;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+a.footer-link {
+    color: rgba($color: $white, $alpha: .55);
+    &:hover {
+        color: rgba($color: $white, $alpha: .75);
+    }
+}
+
+p.footer-copyright {
+    color: rgba($color: $white, $alpha: .55);
+}

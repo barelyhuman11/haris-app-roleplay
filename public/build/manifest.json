@@ -1,0 +1,32 @@
+{
+  "_module.esm-uXcmRlT3.js": {
+    "file": "assets/module.esm-uXcmRlT3.js",
+    "name": "module.esm"
+  },
+  "resources/css/tailwind.css": {
+    "file": "assets/tailwind-QKStTSPA.css",
+    "src": "resources/css/tailwind.css",
+    "isEntry": true
+  },
+  "resources/js/admin.js": {
+    "file": "assets/admin-DH2LaybA.js",
+    "name": "admin",
+    "src": "resources/js/admin.js",
+    "isEntry": true,
+    "imports": [
+      "_module.esm-uXcmRlT3.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-BpFDCOHE.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_module.esm-uXcmRlT3.js"
+    ],
+    "css": [
+      "assets/app-BUa6iE3D.css"
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+<?php
+
+namespace App\Helpers\API;
+
+use Illuminate\Support\Facades\Http;
+
+class DeepSeek
+{
+    private $baseEndpoint = 'https://api.deepseek.com/';
+
+    private $endpoint;
+
+    private $token;
+
+    public $error;
+
+    private $requestData = [];
+
+    private $systemMessage;
+    private $responseFormat = 'text';
+    private $chat;
+
+    public function __construct()
+    {
+        $this->token = config('services.deepseek.api_key');
+    }
+
+    public function setResponseAsTest()
+    {
+        $this->responseFormat = 'text';
+    }
+
+    public function setResponseAsJSON()
+    {
+        $this->responseFormat = 'json_object';
+    }
+
+    public function setSystemMessage($systemMessage)
+    {
+        $this->systemMessage = $systemMessage;
+        return $this;
+    }
+
+    public function chat($chat)
+    {
+        $this->endpoint = $this->baseEndpoint . 'chat/completions';
+        $this->chat = $chat;
+
+        $requestData = [];
+
+        $requestData['messages'] = [];
+
+        if (!empty(trim($this->systemMessage))) {
+            $requestData['messages'][] = [
+                'content'   => $this->systemMessage,
+                'role'      => 'system',
+            ];
+        }
+
+        if (is_array($chat)) {
+            foreach ($chat as $message) {
+                if (isset($message['content']) && isset($message['role'])) {
+                    $requestData['messages'][] = [
+                        'content'   => $message['content'],
+                        'role'      => $message['role'],
+                    ];
+                }
+            } // [END] foreach
+        }
+        else {
+            $requestData['messages'][] = [
+                'content'   => $this->chat,
+                'role'      => 'user',
+            ];
+        }
+
+        $requestData['model'] = 'deepseek-chat';
+        $requestData['max_tokens'] = 8192;
+        $requestData['response_format'] = [
+            'type' => $this->responseFormat,
+        ];
+
+        $this->requestData = $requestData;
+
+        return $this;
+    }
+
+    public function result()
+    {
+        try {
+            $response = Http::retry(3, 3000)
+                ->withHeaders([
+                    'Authorization' => 'Bearer ' . $this->token,
+                    'Content-Type' => 'application/json',
+                ])
+                ->post($this->endpoint, $this->requestData);
+        }
+        catch (\Illuminate\Http\Client\RequestException $e) {
+            $this->error = $e->response->body();
+            return false;
+        }
+
+        return $response->json();
+    }
+}

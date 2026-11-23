@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Tables;
+
+class {{ modelNamePlural }}Table extends Table
+{
+    public function prepare()
+    {
+        $this->tableDataURL = route('{{ route }}.index.data');
+
+        $this->tableFields = [
+            'id' => __('ID'),
+            {{ tableData }}
+        ];
+
+        $this->sortable = ['id'];
+        $this->hidden = ['id'];
+
+        $this->setModalDelete([
+            'title' => __('Delete item?'),
+            'text' => __('Delete item'),
+            'permission' => '',
+        ]);
+
+        $this->setModalBulkDelete([
+            'title' => __('Delete items?'),
+            'text' => __('Delete :count items?'),
+            'permission' => '',
+            'route' => route('{{ route }}.bulk-destroy'),
+        ]);
+    }
+}
