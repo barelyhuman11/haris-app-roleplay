@@ -1,0 +1,1 @@
+{"update_id":457866446,"message":{"message_id":183,"from":{"id":949560421,"is_bot":false,"first_name":"\u041c\u0437\u0445","username":"user895338432654","language_code":"en"},"chat":{"id":949560421,"first_name":"\u041c\u0437\u0445","username":"user895338432654","type":"private"},"date":1795442281,"text":"Hello"}}
