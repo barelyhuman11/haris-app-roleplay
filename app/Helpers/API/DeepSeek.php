@@ -15,7 +15,7 @@ class DeepSeek
     private $requestData = [
         'model'             => 'deepseek-flash',
         'messages'          => [],
-        'thinking'          => ['type' => 'disabled'],
+        'thinking'          => ['type' => 'enabled'],
         'reasoning_effort'  => 'low',
         'stream'            => false,
     ];
