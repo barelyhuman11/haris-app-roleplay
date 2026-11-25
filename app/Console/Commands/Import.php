@@ -54,7 +54,7 @@ class Import extends Command
             }
 
             Message::create([
-                'type' => $item['role'] === 'user' ? 'USER' : 'ASSISTANT',
+                'type' => $item['role'] === 'user' ? 'USER' : 'AI',
                 'message' => $item['content'],
             ]);
 
