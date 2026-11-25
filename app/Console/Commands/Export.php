@@ -26,12 +26,7 @@ class Export extends Command
      */
     public function handle()
     {
-        $messages = [
-            [
-                'role' => 'system',
-                'content' => file_get_contents(resource_path('system_message.txt')),
-            ],
-        ];
+        $messages = [];
 
         foreach (Message::orderBy('id')->cursor() as $msg) {
             $messages[] = [
