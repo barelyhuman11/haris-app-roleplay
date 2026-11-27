@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('deepseek_id')->nullable();
             $table->text('message');
             $table->json('witnesses')->nullable();
+            $table->integer('batch')->nullable();
         });
     }
 
