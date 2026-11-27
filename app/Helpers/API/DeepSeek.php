@@ -16,7 +16,7 @@ class DeepSeek
         'model'             => 'deepseek-flash',
         'messages'          => [],
         'thinking'          => ['type' => 'enabled'],
-        'reasoning_effort'  => 'low',
+        'reasoning_effort'  => 'high',
         'stream'            => false,
     ];
 
